@@ -34,6 +34,9 @@ class InfoPage {
         cy.get(':nth-child(27) > span').click()
         cy.get(this.selectorList().genericDropdownField).eq(1).click()
         cy.get(':nth-child(3) > span').click()
+    }
+    
+    saveInfo(){
         cy.get(this.selectorList().saveButton).eq(0).click()
         cy.get('body').should('contain', 'Successfully Updated')
         cy.get('.oxd-toast-close')

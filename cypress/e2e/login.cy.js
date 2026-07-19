@@ -43,5 +43,6 @@ describe('Orange HRM Tests', () => {
     info.updatePersonalDetails('Teste', 'de', 'Cypress')
     info.updateEmployeeDetails('EmployeeID', 'OtherID', 'Driver')
     info.updateOtherDetails('1994-07-18')
+    info.saveInfo()
   })
 })
