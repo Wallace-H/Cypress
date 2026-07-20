@@ -21,11 +21,6 @@ class LoginPage {
         cy.get(this.selectorList().loginButton).click()
     }
 
-    validateLogin(){
-        cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
-        cy.get(this.selectorList().dashboardValidation)
-    }
-
     validateErrorMessage(){
         cy.get(this.selectorList().errorMessage).should('be.visible')
     }

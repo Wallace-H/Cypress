@@ -5,7 +5,7 @@ class InfoPage {
             middleNameField: '[name="middleName"]',
             lastNameField: '[name="lastName"]',
             genericField: '.oxd-input--active',
-            dateField: '[placeholder="yyyy-dd-mm"]',
+            dateField: '[placeholder="dd-mm-yyyy"]',
             dateCloseButton: '.--close',
             dateTodayButton: '.--today',
             saveButton: '[type="submit"]',
@@ -15,12 +15,12 @@ class InfoPage {
     }
 
 
-    updatePersonalDetails(firstName, middleName, lastName, ){ //genericField1, genericField2, genericField3, dateField, dateCloseButton, dateTodayButton, saveButton, genericDropdownField
+    updatePersonalDetails(firstName, middleName, lastName){ 
         cy.get(this.selectorList().firstNameField).clear().type(firstName)
         cy.get(this.selectorList().middleNameField).clear().type(middleName)
         cy.get(this.selectorList().lastNameField).clear().type(lastName)
     }
-    updateEmployeeDetails(EmployeeID, OtherID, Driver, dateField, dateCloseButton, dateTodayButton, saveButton, genericDropdownField){
+    updateEmployeeDetails(EmployeeID, OtherID, Driver){
         cy.get(this.selectorList().genericField).eq(3).clear().type(EmployeeID)
         cy.get(this.selectorList().genericField).eq(4).clear().type(OtherID)
         cy.get(this.selectorList().genericField).eq(5).clear().type(Driver)
