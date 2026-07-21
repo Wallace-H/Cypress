@@ -17,7 +17,7 @@ describe('Orange HRM Update Info', () => {
     menu.accessMyInfo()
     info.updatePersonalDetails('Teste', 'de', 'Cypress')
     info.updateEmployeeDetails('EmployeeID', 'OtherID', 'Driver')
-    info.updateOtherDetails('18-07-1994')
+    info.updateOtherDetails('1994-07-18')
     info.saveInfo()
   })
 })

@@ -4,12 +4,19 @@ class InfoPage {
             firstNameField: '[name="firstName"]',
             middleNameField: '[name="middleName"]',
             lastNameField: '[name="lastName"]',
-            genericField: '.oxd-input--active',
-            dateField: '[placeholder="dd-mm-yyyy"]',
-            dateCloseButton: '.--close',
-            dateTodayButton: '.--today',
-            saveButton: '[type="submit"]',
-            genericDropdownField: '[clear="false"]'
+            expiryDateField: '.oxd-input-group:contains("License Expiry Date") input',
+            birthDateField: '.oxd-input-group:contains("Date of Birth") input',
+            dateCloseButton: '.oxd-calendar-wrapper .--close',
+            dateTodayButton: '.oxd-date-input-links .--today',
+            savePersonalButton: '.orangehrm-horizontal-padding [type="submit"]',
+            nationalityDropdownField: '.oxd-input-group:contains("Nationality") .oxd-select-text-input',
+            maritalStatusDropdownField: '.oxd-input-group:contains("Marital Status") .oxd-select-text-input',
+            employeeIdField: '.oxd-input-group:contains("Employee Id") input',
+            otherIdField: '.oxd-input-group:contains("Other Id") input',
+            driverLicenseField: '.oxd-input-group:contains("License Number") input',
+            nationalityOption: '.oxd-select-option:contains("Brazilian")',
+            maritalStatusOption: '.oxd-select-option:contains("Other")',
+            
         }
         return selectors
     }
@@ -21,23 +28,23 @@ class InfoPage {
         cy.get(this.selectorList().lastNameField).clear().type(lastName)
     }
     updateEmployeeDetails(EmployeeID, OtherID, Driver){
-        cy.get(this.selectorList().genericField).eq(3).clear().type(EmployeeID)
-        cy.get(this.selectorList().genericField).eq(4).clear().type(OtherID)
-        cy.get(this.selectorList().genericField).eq(5).clear().type(Driver)
-        cy.get(this.selectorList().dateField).eq(0).click()
-        cy.get(this.selectorList().dateTodayButton).eq(0).click()
+        cy.get(this.selectorList().employeeIdField).clear().type(EmployeeID)
+        cy.get(this.selectorList().otherIdField).clear().type(OtherID)
+        cy.get(this.selectorList().driverLicenseField).clear().type(Driver)
+        cy.get(this.selectorList().expiryDateField).click()
+        cy.get(this.selectorList().dateTodayButton).click()
     }
     updateOtherDetails(dateField){
-        cy.get(this.selectorList().dateField).eq(1).clear().type(dateField)
-        cy.get(this.selectorList().dateCloseButton).eq(0).click()
-        cy.get(this.selectorList().genericDropdownField).eq(0).click()
-        cy.get(':nth-child(27) > span').click()
-        cy.get(this.selectorList().genericDropdownField).eq(1).click()
-        cy.get(':nth-child(3) > span').click()
+        cy.get(this.selectorList().birthDateField).clear().type(dateField)
+        cy.get(this.selectorList().dateCloseButton).click()
+        cy.get(this.selectorList().nationalityDropdownField).click()
+        cy.get(this.selectorList().nationalityOption).click()
+        cy.get(this.selectorList().maritalStatusDropdownField).click()
+        cy.get(this.selectorList().maritalStatusOption).click()
     }
     
     saveInfo(){
-        cy.get(this.selectorList().saveButton).eq(0).click()
+        cy.get(this.selectorList().savePersonalButton).click()
         cy.get('body').should('contain', 'Successfully Updated')
         cy.get('.oxd-toast-close')
     }
